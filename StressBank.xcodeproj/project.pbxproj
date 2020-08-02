@@ -13,9 +13,11 @@
 		2215214B24D4EAC5001901D7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2215214924D4EAC5001901D7 /* Main.storyboard */; };
 		2215214D24D4EAC9001901D7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2215214C24D4EAC9001901D7 /* Assets.xcassets */; };
 		2215215024D4EAC9001901D7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2215214E24D4EAC9001901D7 /* LaunchScreen.storyboard */; };
+		E91EF4DAE0E33DE3D764DC75 /* Pods_StressBank.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 072E938ED9C1E07B0DA92421 /* Pods_StressBank.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		072E938ED9C1E07B0DA92421 /* Pods_StressBank.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StressBank.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2215214024D4EAC5001901D7 /* StressBank.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StressBank.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2215214324D4EAC5001901D7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2215214524D4EAC5001901D7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -24,6 +26,8 @@
 		2215214C24D4EAC9001901D7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2215214F24D4EAC9001901D7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2215215124D4EAC9001901D7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		606089168118B5967F1381B8 /* Pods-StressBank.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StressBank.debug.xcconfig"; path = "Target Support Files/Pods-StressBank/Pods-StressBank.debug.xcconfig"; sourceTree = "<group>"; };
+		6DA3FD3BF1E6E1318B66CD85 /* Pods-StressBank.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StressBank.release.xcconfig"; path = "Target Support Files/Pods-StressBank/Pods-StressBank.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +35,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E91EF4DAE0E33DE3D764DC75 /* Pods_StressBank.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -42,6 +47,8 @@
 			children = (
 				2215214224D4EAC5001901D7 /* StressBank */,
 				2215214124D4EAC5001901D7 /* Products */,
+				53BA825564CA17163D5E8B7C /* Pods */,
+				5C48BE13FBFD3FE6F2AC4C8D /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -67,6 +74,24 @@
 			path = StressBank;
 			sourceTree = "<group>";
 		};
+		53BA825564CA17163D5E8B7C /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				606089168118B5967F1381B8 /* Pods-StressBank.debug.xcconfig */,
+				6DA3FD3BF1E6E1318B66CD85 /* Pods-StressBank.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		5C48BE13FBFD3FE6F2AC4C8D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				072E938ED9C1E07B0DA92421 /* Pods_StressBank.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -74,9 +99,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2215215424D4EAC9001901D7 /* Build configuration list for PBXNativeTarget "StressBank" */;
 			buildPhases = (
+				9299B12B5DF53DDA64FB4667 /* [CP] Check Pods Manifest.lock */,
 				2215213C24D4EAC5001901D7 /* Sources */,
 				2215213D24D4EAC5001901D7 /* Frameworks */,
 				2215213E24D4EAC5001901D7 /* Resources */,
+				BF9FDF9770BC588A7C1546B0 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -132,6 +159,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		9299B12B5DF53DDA64FB4667 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-StressBank-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BF9FDF9770BC588A7C1546B0 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-StressBank/Pods-StressBank-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-StressBank/Pods-StressBank-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-StressBank/Pods-StressBank-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		2215213C24D4EAC5001901D7 /* Sources */ = {
@@ -282,6 +351,7 @@
 		};
 		2215215524D4EAC9001901D7 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 606089168118B5967F1381B8 /* Pods-StressBank.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -300,6 +370,7 @@
 		};
 		2215215624D4EAC9001901D7 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6DA3FD3BF1E6E1318B66CD85 /* Pods-StressBank.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
