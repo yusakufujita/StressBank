@@ -74,7 +74,6 @@
 				228CBAD7253E0E5A00439331 /* Controller */,
 				2215214324D4EAC5001901D7 /* AppDelegate.swift */,
 				2215214524D4EAC5001901D7 /* SceneDelegate.swift */,
-				228CBAA4253D852B00439331 /* ViewController.swift */,
 				22A5B5212537233300FD652A /* GoogleService-Info.plist */,
 				2215215124D4EAC9001901D7 /* Info.plist */,
 			);
@@ -84,6 +83,7 @@
 		228CBAD7253E0E5A00439331 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				228CBAA4253D852B00439331 /* ViewController.swift */,
 				228CBADA253E0FB200439331 /* LoginViewController.swift */,
 				2215214724D4EAC5001901D7 /* StressSaveViewController.swift */,
 			);

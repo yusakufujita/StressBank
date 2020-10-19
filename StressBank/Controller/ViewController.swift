@@ -10,13 +10,29 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    
+    
+    @IBOutlet weak var textfield: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        
+        
+        
         // Do any additional setup after loading the view.
     }
     
-
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewDidLoad()
+        
+        self.navigationController?.navigationBar.isHidden = true
+    }
+    
+    
+    @IBAction func done(_ sender: Any) {
+    }
+    
     /*
     // MARK: - Navigation
 
