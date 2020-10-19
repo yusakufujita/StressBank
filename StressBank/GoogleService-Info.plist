@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>561475304782-75kv0cm960j6lnrdc5ofgr3j7ve5em89.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.561475304782-75kv0cm960j6lnrdc5ofgr3j7ve5em89</string>
+	<key>API_KEY</key>
+	<string>AIzaSyDgu5f_1If7cgt5ie5gUS533i30v57Iyfg</string>
+	<key>GCM_SENDER_ID</key>
+	<string>561475304782</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.hanjirou.StressBank</string>
+	<key>PROJECT_ID</key>
+	<string>stressbank-4309c</string>
+	<key>STORAGE_BUCKET</key>
+	<string>stressbank-4309c.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:561475304782:ios:12b31a05d3210a26a2b21f</string>
+	<key>DATABASE_URL</key>
+	<string>https://stressbank-4309c.firebaseio.com</string>
+</dict>
+</plist>
