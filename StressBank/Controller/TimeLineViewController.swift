@@ -1,38 +1,23 @@
 //
-//  ViewController.swift
+//  TimeLineViewController.swift
 //  StressBank
 //
-//  Created by 藤田優作 on 2020/10/19.
+//  Created by 藤田優作 on 2020/10/21.
 //  Copyright © 2020 藤田優作. All rights reserved.
 //
 
 import UIKit
 
-class ViewController: UIViewController {
 
-    
-    
-    @IBOutlet weak var textfield: UITextField!
-    
+class TimeLineViewController: UIViewController {
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        
-        
-        
         // Do any additional setup after loading the view.
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewDidLoad()
-        
-        self.navigationController?.navigationBar.isHidden = true
-    }
-    
-    
-    @IBAction func done(_ sender: Any) {
-    }
-    
+
     /*
     // MARK: - Navigation
 

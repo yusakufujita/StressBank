@@ -7,8 +7,11 @@
 //
 
 import UIKit
+import Firebase
 
 class LoginViewController: UIViewController {
+    
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,6 +24,12 @@ class LoginViewController: UIViewController {
         
         self.navigationController?.navigationBar.isHidden = true
     }
+    
+    @IBAction func login(_ sender: Any) {
+        
+        
+    }
+    
 
     /*
     // MARK: - Navigation
