@@ -15,7 +15,9 @@
 		2215215024D4EAC9001901D7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2215214E24D4EAC9001901D7 /* LaunchScreen.storyboard */; };
 		228CBAA5253D852B00439331 /* EditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228CBAA4253D852B00439331 /* EditViewController.swift */; };
 		228CBADB253E0FB200439331 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228CBADA253E0FB200439331 /* LoginViewController.swift */; };
-		228CBAFC25402B6100439331 /* TimeLineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228CBAFB25402B6100439331 /* TimeLineViewController.swift */; };
+		229FAE812541CF40001A4578 /* TimeLineTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229FAE802541CF40001A4578 /* TimeLineTableViewController.swift */; };
+		229FAE882541D335001A4578 /* TImeLineModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229FAE872541D335001A4578 /* TImeLineModel.swift */; };
+		229FAE8B25420827001A4578 /* TimeLineCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229FAE8A25420827001A4578 /* TimeLineCell.swift */; };
 		22A5B5222537233300FD652A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 22A5B5212537233300FD652A /* GoogleService-Info.plist */; };
 		E91EF4DAE0E33DE3D764DC75 /* Pods_StressBank.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 072E938ED9C1E07B0DA92421 /* Pods_StressBank.framework */; };
 /* End PBXBuildFile section */
@@ -32,7 +34,9 @@
 		2215215124D4EAC9001901D7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		228CBAA4253D852B00439331 /* EditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditViewController.swift; sourceTree = "<group>"; };
 		228CBADA253E0FB200439331 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		228CBAFB25402B6100439331 /* TimeLineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeLineViewController.swift; sourceTree = "<group>"; };
+		229FAE802541CF40001A4578 /* TimeLineTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeLineTableViewController.swift; sourceTree = "<group>"; };
+		229FAE872541D335001A4578 /* TImeLineModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TImeLineModel.swift; sourceTree = "<group>"; };
+		229FAE8A25420827001A4578 /* TimeLineCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeLineCell.swift; sourceTree = "<group>"; };
 		22A5B5212537233300FD652A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		606089168118B5967F1381B8 /* Pods-StressBank.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StressBank.debug.xcconfig"; path = "Target Support Files/Pods-StressBank/Pods-StressBank.debug.xcconfig"; sourceTree = "<group>"; };
 		6DA3FD3BF1E6E1318B66CD85 /* Pods-StressBank.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StressBank.release.xcconfig"; path = "Target Support Files/Pods-StressBank/Pods-StressBank.release.xcconfig"; sourceTree = "<group>"; };
@@ -88,7 +92,7 @@
 				228CBAA4253D852B00439331 /* EditViewController.swift */,
 				228CBADA253E0FB200439331 /* LoginViewController.swift */,
 				2215214724D4EAC5001901D7 /* StressSaveViewController.swift */,
-				228CBAFB25402B6100439331 /* TimeLineViewController.swift */,
+				229FAE802541CF40001A4578 /* TimeLineTableViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -98,6 +102,7 @@
 			children = (
 				2215214924D4EAC5001901D7 /* Main.storyboard */,
 				2215214E24D4EAC9001901D7 /* LaunchScreen.storyboard */,
+				229FAE8A25420827001A4578 /* TimeLineCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -106,6 +111,7 @@
 			isa = PBXGroup;
 			children = (
 				2215214C24D4EAC9001901D7 /* Assets.xcassets */,
+				229FAE872541D335001A4578 /* TImeLineModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -245,10 +251,12 @@
 			files = (
 				2215214824D4EAC5001901D7 /* StressSaveViewController.swift in Sources */,
 				2215214424D4EAC5001901D7 /* AppDelegate.swift in Sources */,
+				229FAE812541CF40001A4578 /* TimeLineTableViewController.swift in Sources */,
+				229FAE882541D335001A4578 /* TImeLineModel.swift in Sources */,
+				229FAE8B25420827001A4578 /* TimeLineCell.swift in Sources */,
 				228CBAA5253D852B00439331 /* EditViewController.swift in Sources */,
 				228CBADB253E0FB200439331 /* LoginViewController.swift in Sources */,
 				2215214624D4EAC5001901D7 /* SceneDelegate.swift in Sources */,
-				228CBAFC25402B6100439331 /* TimeLineViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

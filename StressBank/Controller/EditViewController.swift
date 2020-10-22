@@ -118,6 +118,15 @@ class EditViewController: UIViewController,UIImagePickerControllerDelegate,UINav
         //ストレージサーバーから返ってきて画像のURLを取得して、
         //次のタイムライン画面へ画面遷移する
         
+        if imageView.image != nil {
+            
+            //同期処理{}の中の処理が終わらないと下にはいきません
+            DispatchQueue.main.async {
+                self.sendAndGetImageURL()
+            }
+            performSegue(withIdentifier: "toProfile", sender: <#T##Any?#>)
+        }
+        
         
         //textfieldsの値をアプリ内へ保存します
         if textfield.text?.isEmpty != true {
@@ -160,6 +169,9 @@ class EditViewController: UIViewController,UIImagePickerControllerDelegate,UINav
         }
         
         //HUD
+        HUD.dimsBackground = false
+        HUD.show(.progress)
+        
         
         //アップロードタスク
         let uploadTask = imageRef.putData(imageData, metadata: nil){(metaData, error) in
@@ -173,6 +185,7 @@ class EditViewController: UIViewController,UIImagePickerControllerDelegate,UINav
                 if url != nil{
                     
                     //HUD
+                    HUD.hide()
                     self.imageURL = url
                     UserDefaults.standard.set(self.imageURL?.absoluteString, forKey: "ProfileImageString")
                 }
