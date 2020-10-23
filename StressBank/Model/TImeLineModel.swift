@@ -53,13 +53,13 @@ class TimeLineModel {
 }
 
 extension TimeLineModel{
-    func plusGoodluckCounts(){
+    func plusGoodLuck(){
         GoodluckCounts += 1
         ref.child("GoodluckCounts").setValue(GoodluckCounts)
     }
     
  
-    func minusLike(){
+    func minusGoodLuck(){
         GoodluckCounts -= 1
         ref.child("GoodluckCounts").setValue(GoodluckCounts)
         

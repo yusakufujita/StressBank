@@ -29,4 +29,34 @@ class TimeLineCell: UITableViewCell {
     var tapGLButtonCount = 0
     
 
+    var timeLineModel:TimeLineModel! {
+        didSet{
+            commentLabel.text = timeLineModel.text
+            commentLabel.sizeToFit()
+            profileImageView.sd_setImage(with: URL(string: timeLineModel.profileImageString), placeholderImage: UIImage(named: "noImage"), options: .continueInBackground, completed: nil)
+            userNameLabel.text = timeLineModel.userName
+            GLButon.setTitle("\(timeLineModel.GoodluckCounts)", for: [])
+            
+        }
+    }
+    
+    //lottieを使ってgoodluckのアニメーションを作るかも
+    //コース37にある
+    
+    @IBAction func GLButtonTap(_ sender: Any) {
+        
+        if tapGLButtonCount == 0 {
+            timeLineModel.plusGoodLuck()
+            GLButon.setTitle("\(timeLineModel.GoodluckCounts)", for: [])
+            GLButon.setTitleColor(tapGLColor, for: [])
+            tapGLButtonCount = 1
+        } else if tapGLButtonCount == 1 {
+            
+            timeLineModel.minusGoodLuck()
+            GLButon.setTitle("\(timeLineModel.GoodluckCounts)", for: [])
+            GLButon.setTitleColor(tapGLColor, for: [])
+            tapGLButtonCount = 0
+        }
+    }
+    
 }
