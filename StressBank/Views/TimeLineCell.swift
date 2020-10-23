@@ -22,13 +22,8 @@ class TimeLineCell: UITableViewCell {
 
     let tapGLColor = UIColor.orange
     let normalGLColor = UIColor.lightGray
-    
     var animationView:AnimationView! = AnimationView()
-    
-    
     var tapGLButtonCount = 0
-    
-
     var timeLineModel:TimeLineModel! {
         didSet{
             commentLabel.text = timeLineModel.text
@@ -43,20 +38,19 @@ class TimeLineCell: UITableViewCell {
     //lottieを使ってgoodluckのアニメーションを作るかも
     //コース37にある
     
+
     @IBAction func GLButtonTap(_ sender: Any) {
-        
         if tapGLButtonCount == 0 {
-            timeLineModel.plusGoodLuck()
-            GLButon.setTitle("\(timeLineModel.GoodluckCounts)", for: [])
-            GLButon.setTitleColor(tapGLColor, for: [])
-            tapGLButtonCount = 1
-        } else if tapGLButtonCount == 1 {
-            
-            timeLineModel.minusGoodLuck()
-            GLButon.setTitle("\(timeLineModel.GoodluckCounts)", for: [])
-            GLButon.setTitleColor(tapGLColor, for: [])
-            tapGLButtonCount = 0
-        }
+                   timeLineModel.plusGoodLuck()
+                   GLButon.setTitle("\(timeLineModel.GoodluckCounts)", for: [])
+                   GLButon.setTitleColor(tapGLColor, for: [])
+                   tapGLButtonCount = 1
+               } else if tapGLButtonCount == 1 {
+                   
+                   timeLineModel.minusGoodLuck()
+                   GLButon.setTitle("\(timeLineModel.GoodluckCounts)", for: [])
+                   GLButon.setTitleColor(tapGLColor, for: [])
+                   tapGLButtonCount = 0
+               }
     }
-    
 }

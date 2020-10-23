@@ -50,7 +50,18 @@ class TimeLineTableViewController: UITableViewController {
         super.viewDidAppear(animated)
         
         //コンテンツを受信します。
-        timeLineRef
+        timeLineRef.observe(.value) { (snapshot) in
+            self.timeLines.removeAll()
+            
+            for child in snapshot.children {
+                let childSnapshot = child as! DataSnapshot
+                let timeline = TimeLineModel(snapshot: childSnapshot)
+                print(timeline)
+                self.timeLines.insert(timeline, at: 0)
+            }
+            self.tableView.reloadData()
+        }
+        //snapshotの中に何もなかったらここから呼ばれる
     }
     
 
@@ -70,9 +81,38 @@ class TimeLineTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! TimeLineCell
         
-
+        let timeLineModel = timeLines[indexPath.row]
+        
+        cell.timeLineModel = timeLineModel
+        
 
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        profileImageString = timeLines[indexPath.row].profileImageString
+        userName = timeLines[indexPath.row].userName
+        GoodluckCounts = timeLines[indexPath.row].GoodluckCounts
+        StressCounts = timeLines[indexPath.row].StressCounts
+        text = timeLines[indexPath.row].text
+
+        performSegue(withIdentifier: "datailView", sender: nil)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue,sender:Any?){
+        
+        if segue.identifier == "detailView" {
+            
+            let datailViewController = segue.destination as! DetailViewController
+            datailViewController.profileImage = profileImageString
+            datailViewController.userName = userName
+            datailViewController.GoodluckCounts = GoodluckCounts
+            datailViewController.stressCounts = StressCounts
+            datailViewController.comment = text
+            
+            
+        }
     }
     
 

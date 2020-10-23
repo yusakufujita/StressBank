@@ -124,7 +124,7 @@ class EditViewController: UIViewController,UIImagePickerControllerDelegate,UINav
             DispatchQueue.main.async {
                 self.sendAndGetImageURL()
             }
-            performSegue(withIdentifier: "toProfile", sender: <#T##Any?#>)
+            performSegue(withIdentifier: "toProfile", sender: nil)
         }
         
         
