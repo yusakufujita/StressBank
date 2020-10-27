@@ -98,6 +98,7 @@ class EditViewController: UIViewController,UIImagePickerControllerDelegate,UINav
         
         alert.addAction(cameraAction)
         alert.addAction(albumAction)
+        alert.addAction(cancelAction)
         self.present(alert, animated: true, completion: nil)
         
     }
@@ -124,7 +125,7 @@ class EditViewController: UIViewController,UIImagePickerControllerDelegate,UINav
             DispatchQueue.main.async {
                 self.sendAndGetImageURL()
             }
-            performSegue(withIdentifier: "toProfile", sender: nil)
+            performSegue(withIdentifier: "toTimeLine", sender: nil)
         }
         
         
@@ -142,7 +143,7 @@ class EditViewController: UIViewController,UIImagePickerControllerDelegate,UINav
         }
         
         
-        performSegue(withIdentifier: "toProfile", sender: nil)
+        performSegue(withIdentifier: "toTimeLine", sender: nil)
         //UserNameViewを消す
     }
     

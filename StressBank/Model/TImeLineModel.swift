@@ -17,15 +17,18 @@ class TimeLineModel {
     var StressCounts = 0
     let ref:DatabaseReference
     
-    init(text:String,profileImageString:String,userName:String){
+    //StressCountsをinitで入れるべきかもしれない
+    init(text:String,profileImageString:String,userName:String,StressCounts:Int){
         
         
         self.text = text
         self.profileImageString = profileImageString
         self.userName = userName
+        self.StressCounts = StressCounts
         ref = Database.database().reference().child("timeLine").childByAutoId()
         
     }
+    
     
     init(snapshot:DataSnapshot) {
         ref = snapshot.ref

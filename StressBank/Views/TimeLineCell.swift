@@ -23,13 +23,25 @@ class TimeLineCell: UITableViewCell {
     let tapGLColor = UIColor.orange
     let normalGLColor = UIColor.lightGray
     var animationView:AnimationView! = AnimationView()
-    var tapGLButtonCount = 0
+    var GLTapFlag = false
+    var profileImageStringCheck = String()
+    
     var timeLineModel:TimeLineModel! {
         didSet{
             commentLabel.text = timeLineModel.text
-            commentLabel.sizeToFit()
+//            commentLabel.sizeToFit()
             profileImageView.sd_setImage(with: URL(string: timeLineModel.profileImageString), placeholderImage: UIImage(named: "noImage"), options: .continueInBackground, completed: nil)
             userNameLabel.text = timeLineModel.userName
+            
+            if GLTapFlag == false {
+                GLButon.setTitleColor(normalGLColor, for: [])
+            }else if timeLineModel.GoodluckCounts == 0 && GLTapFlag == true{
+                GLButon.setTitleColor(normalGLColor, for: [])
+            }else if GLTapFlag == true{
+                GLButon.setTitleColor(tapGLColor, for: [])
+            }
+            
+            print(timeLineModel.GoodluckCounts)
             GLButon.setTitle("\(timeLineModel.GoodluckCounts)", for: [])
             
         }
@@ -40,17 +52,16 @@ class TimeLineCell: UITableViewCell {
     
 
     @IBAction func GLButtonTap(_ sender: Any) {
+        
         if tapGLButtonCount == 0 {
                    timeLineModel.plusGoodLuck()
                    GLButon.setTitle("\(timeLineModel.GoodluckCounts)", for: [])
                    GLButon.setTitleColor(tapGLColor, for: [])
-                   tapGLButtonCount = 1
                } else if tapGLButtonCount == 1 {
                    
                    timeLineModel.minusGoodLuck()
                    GLButon.setTitle("\(timeLineModel.GoodluckCounts)", for: [])
                    GLButon.setTitleColor(tapGLColor, for: [])
-                   tapGLButtonCount = 0
                }
     }
 }

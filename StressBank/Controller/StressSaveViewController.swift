@@ -9,18 +9,21 @@
 import UIKit
 import AVFoundation
 import Firebase
+import PKHUD
 
-class StressSaveViewController: UIViewController {
+class StressSaveViewController: UIViewController,UIImagePickerControllerDelegate,UINavigationControllerDelegate {
 
     
     @IBOutlet weak var MoneyLabel: UILabel!
-    
     @IBOutlet weak var MoneyText: UITextField!
-    
     @IBOutlet weak var MoneyText2: UITextField!
-    
     @IBOutlet weak var PosseLabel: UILabel!
+    @IBOutlet weak var commentTextView: UITextView!
     
+    var imageURL:URL?
+    var profileImageString = ""
+    var userName = ""
+    var stresscount = Int()
     
     // var num:Int
     var num1:Int = 0
@@ -31,10 +34,78 @@ class StressSaveViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-  
+        title = "StressBank"
+        commentTextView.text = ""
+        commentTextView.becomeFirstResponder()
     
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        if UserDefaults.standard.object(forKey: "profileImageString") != nil {
+            profileImageString = UserDefaults.standard.object(forKey: "profileImageString") as! String
+            userName = UserDefaults.standard.object(forKey: "userName") as! String
+            print(profileImageString,userName)
+        }
+        
+    }
+    
+    func openActionSheet() {
+        
+        let alert:UIAlertController = UIAlertController(title: "選択してください", message: "", preferredStyle: .actionSheet)
+        
+        let cameraAction:UIAlertAction = UIAlertAction(title: "カメラから", style: .default) { (alert) in
+            
+            let sourceType = UIImagePickerController.SourceType.camera
+            if UIImagePickerController.isSourceTypeAvailable(.camera){
+                let cameraPicker = UIImagePickerController()
+                cameraPicker.sourceType = sourceType
+                cameraPicker.delegate = self
+                cameraPicker.allowsEditing = true
+                
+                //カメラを出す
+                self.present(cameraPicker, animated: true)
+            } else {
+                print("エラーです")
+            }
+        }
+        
+        let albumAction = UIAlertAction(title: "アルバムから", style: .default) {
+            (alert) in
+            
+            let sourceType = UIImagePickerController.SourceType.photoLibrary
+            if UIImagePickerController.isSourceTypeAvailable(.photoLibrary){
+                let albumPicker = UIImagePickerController()
+                albumPicker.sourceType = sourceType
+                albumPicker.delegate = self
+                albumPicker.allowsEditing = true
+                
+                //カメラを出す
+                self.present(albumPicker, animated: true)
+            } else {
+                print("エラーです")
+            }
+        }
+        
+        let cancelAction = UIAlertAction(title: "キャンセル", style: .cancel){(alert) in
+            
+            print("キャンセル")
+        }
+        
+        alert.addAction(cameraAction)
+        alert.addAction(albumAction)
+        alert.addAction(cancelAction)
+        self.present(alert, animated: true, completion: nil)
+        
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        //タッチでキーボードを下げる
+        commentTextView.resignFirstResponder()
+    }
+    
+    
 
     //引き出すボタン
     @IBAction func WithdrawButton(_ sender: Any) {
@@ -83,6 +154,14 @@ class StressSaveViewController: UIViewController {
 //        print(num4)
     }
    
+    
+    @IBAction func postContentToDatabase(_ sender: Any) {
+        if commentTextView.text != "" {
+            let timeLineModel = TimeLineModel(text: commentTextView.text, profileImageString: profileImageString, userName: userName, StressCounts: stresscount)
+            timeLineModel.save()
+            self.navigationController?.popViewController(animated: true)
+        }
+    }
     
 }
 

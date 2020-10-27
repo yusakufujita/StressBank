@@ -1,0 +1,6 @@
+framework module Pods_StressBank {
+  umbrella header "Pods-StressBank-umbrella.h"
+
+  export *
+  module * { export * }
+}
