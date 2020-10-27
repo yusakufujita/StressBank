@@ -108,7 +108,7 @@ class EditViewController: UIViewController,UIImagePickerControllerDelegate,UINav
     override func viewWillAppear(_ animated: Bool) {
         super.viewDidLoad()
         
-        self.navigationController?.navigationBar.isHidden = true
+//        self.navigationController?.navigationBar.isHidden = true
     }
     
     

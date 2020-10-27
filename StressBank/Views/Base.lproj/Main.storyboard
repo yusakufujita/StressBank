@@ -34,10 +34,14 @@
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WaJ-df-nzF">
                                         <rect key="frame" x="25" y="512" width="367" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="backgroundColor" systemColor="systemGray4Color"/>
                                         <state key="normal" title="Googleログイン">
                                             <color key="titleColor" systemColor="labelColor"/>
+                                            <color key="titleShadowColor" systemColor="systemGray6Color"/>
                                         </state>
+                                        <connections>
+                                            <action selector="GLogin:" destination="WON-1T-BaK" eventType="touchUpInside" id="NPL-Ff-b2c"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="key-GA-UNp">
                                         <rect key="frame" x="25" y="572" width="367" height="30"/>
@@ -54,9 +58,23 @@
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
-                                            <action selector="singUp:" destination="WON-1T-BaK" eventType="touchUpInside" id="RP4-Mm-gIH"/>
+                                            <segue destination="7eX-hJ-5t6" kind="show" identifier="signup" id="Dsl-yB-kGl"/>
                                         </connections>
                                     </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4vy-i3-O2Z">
+                                        <rect key="frame" x="158" y="54" width="101" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="パスワードは、6文字以上" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7tt-VF-Jgq">
+                                        <rect key="frame" x="49" y="189" width="343" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" systemColor="systemRedColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <viewLayoutGuide key="contentLayoutGuide" id="hlE-iZ-riQ"/>
                                 <viewLayoutGuide key="frameLayoutGuide" id="LAP-f7-kb1"/>
@@ -87,6 +105,7 @@
                     <navigationItem key="navigationItem" id="Dth-Y1-FSb"/>
                     <connections>
                         <outlet property="email" destination="l84-yK-37z" id="w4s-8U-4Ij"/>
+                        <outlet property="label" destination="4vy-i3-O2Z" id="Q5M-wd-ssa"/>
                         <outlet property="password" destination="Tlh-2W-TH0" id="zfW-p7-UDN"/>
                         <segue destination="vXO-OK-LRH" kind="show" identifier="toNext1" id="VQb-Bk-3R4"/>
                     </connections>
@@ -94,6 +113,59 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="P7T-iN-dM4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="71.014492753623188" y="118.52678571428571"/>
+        </scene>
+        <!--Sign Up View Controller-->
+        <scene sceneID="dvc-p2-2eu">
+            <objects>
+                <viewController id="7eX-hJ-5t6" customClass="SignUpViewController" customModule="StressBank" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Srh-IR-X83">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="メールアドレス" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Snc-Jq-v0b">
+                                <rect key="frame" x="49" y="235" width="312" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="パスワード" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4Kc-VQ-pBR">
+                                <rect key="frame" x="49" y="304" width="312" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1d5-hj-33q">
+                                <rect key="frame" x="102" y="414" width="210" height="69"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemYellowColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="32"/>
+                                <state key="normal" title="新規登録"/>
+                                <connections>
+                                    <action selector="SignUp:" destination="7eX-hJ-5t6" eventType="touchUpInside" id="BJa-m8-3qz"/>
+                                    <action selector="login:" destination="WON-1T-BaK" eventType="touchUpInside" id="ubx-86-3Z8"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="パスワードは、6文字以上" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="heT-rQ-Hl0">
+                                <rect key="frame" x="51" y="359" width="343" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" systemColor="systemRedColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="zPD-0b-q6D"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="1WN-H0-D3o"/>
+                    <connections>
+                        <outlet property="email" destination="Snc-Jq-v0b" id="HbB-dl-zeE"/>
+                        <outlet property="password" destination="4Kc-VQ-pBR" id="cbE-He-HIc"/>
+                        <segue destination="vXO-OK-LRH" kind="show" identifier="sucess" id="aEU-Lp-HMO"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZsS-Aa-D8S" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="71" y="843"/>
         </scene>
         <!--Edit View Controller-->
         <scene sceneID="fae-ld-1NY">
@@ -436,6 +508,9 @@
             <point key="canvasLocation" x="-760.86956521739137" y="118.52678571428571"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="aEU-Lp-HMO"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="iOS の画像" width="2388" height="1668"/>
         <image name="square.and.pencil" catalog="system" width="128" height="115"/>
@@ -444,6 +519,15 @@
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray4Color">
+            <color red="0.81960784313725488" green="0.81960784313725488" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemGray6Color">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemYellowColor">
             <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
