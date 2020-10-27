@@ -53,15 +53,51 @@ class TimeLineCell: UITableViewCell {
 
     @IBAction func GLButtonTap(_ sender: Any) {
         
-        if tapGLButtonCount == 0 {
-                   timeLineModel.plusGoodLuck()
-                   GLButon.setTitle("\(timeLineModel.GoodluckCounts)", for: [])
-                   GLButon.setTitleColor(tapGLColor, for: [])
-               } else if tapGLButtonCount == 1 {
-                   
-                   timeLineModel.minusGoodLuck()
-                   GLButon.setTitle("\(timeLineModel.GoodluckCounts)", for: [])
-                   GLButon.setTitleColor(tapGLColor, for: [])
-               }
+        if UserDefaults.standard.object(forKey: "profileImageString") != nil {
+            profileImageStringCheck = UserDefaults.standard.object(forKey: "profileImageString") as! String
+        }
+        
+        //自分のアカウント
+        if profileImageStringCheck == timeLineModel.profileImageString{
+            if GLTapFlag == false {
+                timeLineModel.plusGoodLuck()
+                GLButon.setTitle("\(timeLineModel.GoodluckCounts)", for: [])
+                GLButon.setTitleColor(tapGLColor, for: [])
+                GLTapFlag = true
+            } else if GLTapFlag == true {
+                if timeLineModel.GoodluckCounts == 0 {
+                    
+                    GLButon.setTitle("\(timeLineModel.GoodluckCounts)", for: [])
+                    timeLineModel.GoodluckCounts += 1
+                    GLButon.setTitleColor(tapGLColor, for: [])
+                    GLTapFlag = true
+                    return
+                }
+                timeLineModel.minusGoodLuck()
+                GLButon.setTitle("\(timeLineModel.GoodluckCounts)", for: [])
+                GLButon.setTitleColor(tapGLColor, for: [])
+                GLTapFlag = false
+            }
+        }else {
+            if GLTapFlag == false {
+                timeLineModel.plusGoodLuck()
+                GLButon.setTitle("\(timeLineModel.GoodluckCounts)", for: [])
+                GLButon.setTitleColor(tapGLColor, for: [])
+                GLTapFlag = true
+            } else if GLTapFlag == true {
+                if timeLineModel.GoodluckCounts == 0 {
+                    print(timeLineModel.GoodluckCounts)
+                    timeLineModel.GoodluckCounts += 1
+                    GLButon.setTitle("\(timeLineModel.GoodluckCounts)", for: [])
+                    GLButon.setTitleColor(tapGLColor, for: [])
+                    GLTapFlag = true
+                    return
+                }
+                timeLineModel.minusGoodLuck()
+                GLButon.setTitle("\(timeLineModel.GoodluckCounts)", for: [])
+                GLButon.setTitleColor(normalGLColor, for: [])
+                GLTapFlag = false
+            }
+        }
     }
 }

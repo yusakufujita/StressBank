@@ -31,6 +31,32 @@
                                             <action selector="login:" destination="WON-1T-BaK" eventType="touchUpInside" id="CKW-dh-ugb"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WaJ-df-nzF">
+                                        <rect key="frame" x="25" y="512" width="367" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" title="Googleログイン">
+                                            <color key="titleColor" systemColor="labelColor"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="key-GA-UNp">
+                                        <rect key="frame" x="25" y="572" width="367" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="0.016804177310000001" green="0.19835099580000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <state key="normal" title="Facebookログイン">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mcK-2u-ZYS">
+                                        <rect key="frame" x="49" y="295" width="315" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="※新規アカウント登録は、こちら">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="singUp:" destination="WON-1T-BaK" eventType="touchUpInside" id="RP4-Mm-gIH"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <viewLayoutGuide key="contentLayoutGuide" id="hlE-iZ-riQ"/>
                                 <viewLayoutGuide key="frameLayoutGuide" id="LAP-f7-kb1"/>
@@ -60,6 +86,8 @@
                     </view>
                     <navigationItem key="navigationItem" id="Dth-Y1-FSb"/>
                     <connections>
+                        <outlet property="email" destination="l84-yK-37z" id="w4s-8U-4Ij"/>
+                        <outlet property="password" destination="Tlh-2W-TH0" id="zfW-p7-UDN"/>
                         <segue destination="vXO-OK-LRH" kind="show" identifier="toNext1" id="VQb-Bk-3R4"/>
                     </connections>
                 </viewController>

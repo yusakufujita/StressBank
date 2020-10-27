@@ -11,11 +11,13 @@ import Firebase
 
 class LoginViewController: UIViewController {
     
+   
+    @IBOutlet weak var email: UITextField!
+    @IBOutlet weak var password: UITextField!
     
-
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        password.isSecureTextEntry = true
         // Do any additional setup after loading the view.
     }
     
@@ -24,6 +26,14 @@ class LoginViewController: UIViewController {
         
         self.navigationController?.navigationBar.isHidden = true
     }
+    
+    
+    @IBAction func singUp(_ sender: Any) {
+        Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
+          
+        }
+    }
+    
     
     @IBAction func login(_ sender: Any) {
         
