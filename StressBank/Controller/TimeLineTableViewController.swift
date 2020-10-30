@@ -33,7 +33,7 @@ class TimeLineTableViewController: UITableViewController {
         
         self.navigationController?.navigationBar.isHidden = false
         //バックボタンを消す
-        self.navigationItem.hidesBackButton = true
+//        self.navigationItem.hidesBackButton = true
         title = "ストレス銀行"
         //tableviewを触れる
         self.tableView.allowsSelection = true

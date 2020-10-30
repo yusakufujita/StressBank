@@ -156,6 +156,7 @@ class StressSaveViewController: UIViewController,UIImagePickerControllerDelegate
    
     
     @IBAction func postContentToDatabase(_ sender: Any) {
+        stresscount = Int(PosseLabel.text ?? "")!
         if commentTextView.text != "" {
             let timeLineModel = TimeLineModel(text: commentTextView.text, profileImageString: profileImageString, userName: userName, StressCounts: stresscount)
             timeLineModel.save()

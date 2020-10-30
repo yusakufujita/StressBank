@@ -143,7 +143,7 @@ class EditViewController: UIViewController,UIImagePickerControllerDelegate,UINav
         }
         
         
-        performSegue(withIdentifier: "toTimeLine", sender: nil)
+     
         //UserNameViewを消す
     }
     
