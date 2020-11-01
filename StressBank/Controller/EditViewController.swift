@@ -16,8 +16,6 @@ class EditViewController: UIViewController,UIImagePickerControllerDelegate,UINav
     
     //自分のプロフィールURLを先にアップロード
     //返ってきたURLアプリの中に保持しておく
-
-    
     @IBOutlet weak var imageView: UIImageView!
     var imageURL:URL?
     
@@ -120,7 +118,6 @@ class EditViewController: UIViewController,UIImagePickerControllerDelegate,UINav
         //次のタイムライン画面へ画面遷移する
         
         if imageView.image != nil {
-            
             //同期処理{}の中の処理が終わらないと下にはいきません
             DispatchQueue.main.async {
                 self.sendAndGetImageURL()
@@ -131,14 +128,11 @@ class EditViewController: UIViewController,UIImagePickerControllerDelegate,UINav
         
         //textfieldsの値をアプリ内へ保存します
         if textfield.text?.isEmpty != true {
-            
             UserDefaults.standard.set(textfield.text
             ,forKey: "userName")
-            
         } else{
             //振動する
             let generator = UINotificationFeedbackGenerator()
-            
             generator.notificationOccurred(.error)
         }
         
@@ -146,6 +140,8 @@ class EditViewController: UIViewController,UIImagePickerControllerDelegate,UINav
      
         //UserNameViewを消す
     }
+    
+  
     
     func sendAndGetImageURL(){
         //RealtimeDataベース
@@ -163,11 +159,11 @@ class EditViewController: UIViewController,UIImagePickerControllerDelegate,UINav
         let imageRef = storage.child("ProfileImages").child("\(key).jpeg")
         var imageData:Data = Data()
         if self.imageView.image != nil {
-            
             //100分の１に圧縮
             imageData = (self.imageView.image?.jpegData(compressionQuality: 0.01))!
             
         }
+        
         
         //HUD
         HUD.dimsBackground = false

@@ -37,7 +37,21 @@ class LoginViewController: UIViewController {
     }
     
     
+    
+    
 
+    @IBAction func Glogin(_ sender: Any) {
+        
+        
+    }
+    
+    
+    @IBAction func Flogin(_ sender: Any) {
+        
+        
+    }
+    
+    
 
     
     @IBAction func login(_ sender: Any) {

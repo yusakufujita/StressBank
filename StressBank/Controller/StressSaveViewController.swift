@@ -19,6 +19,8 @@ class StressSaveViewController: UIViewController,UIImagePickerControllerDelegate
     @IBOutlet weak var MoneyText2: UITextField!
     @IBOutlet weak var PosseLabel: UILabel!
     @IBOutlet weak var commentTextView: UITextView!
+    @IBOutlet weak var profileImage: UIImageView!
+    @IBOutlet weak var username: UILabel!
     
     var imageURL:URL?
     var profileImageString = ""
@@ -38,6 +40,9 @@ class StressSaveViewController: UIViewController,UIImagePickerControllerDelegate
         commentTextView.text = ""
         commentTextView.becomeFirstResponder()
     
+        //名前とプロフィール画像を表示する
+        username.text = UserDefaults.standard.object(forKey: "userName") as! String
+        
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -52,11 +57,8 @@ class StressSaveViewController: UIViewController,UIImagePickerControllerDelegate
     }
     
     func openActionSheet() {
-        
         let alert:UIAlertController = UIAlertController(title: "選択してください", message: "", preferredStyle: .actionSheet)
-        
         let cameraAction:UIAlertAction = UIAlertAction(title: "カメラから", style: .default) { (alert) in
-            
             let sourceType = UIImagePickerController.SourceType.camera
             if UIImagePickerController.isSourceTypeAvailable(.camera){
                 let cameraPicker = UIImagePickerController()
@@ -70,10 +72,8 @@ class StressSaveViewController: UIViewController,UIImagePickerControllerDelegate
                 print("エラーです")
             }
         }
-        
         let albumAction = UIAlertAction(title: "アルバムから", style: .default) {
             (alert) in
-            
             let sourceType = UIImagePickerController.SourceType.photoLibrary
             if UIImagePickerController.isSourceTypeAvailable(.photoLibrary){
                 let albumPicker = UIImagePickerController()
@@ -89,15 +89,12 @@ class StressSaveViewController: UIViewController,UIImagePickerControllerDelegate
         }
         
         let cancelAction = UIAlertAction(title: "キャンセル", style: .cancel){(alert) in
-            
             print("キャンセル")
         }
-        
         alert.addAction(cameraAction)
         alert.addAction(albumAction)
         alert.addAction(cancelAction)
         self.present(alert, animated: true, completion: nil)
-        
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -106,7 +103,6 @@ class StressSaveViewController: UIViewController,UIImagePickerControllerDelegate
     }
     
     
-
     //引き出すボタン
     @IBAction func WithdrawButton(_ sender: Any) {
         num1 = Int(MoneyLabel.text ?? "お") ?? 0

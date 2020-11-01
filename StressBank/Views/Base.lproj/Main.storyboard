@@ -41,6 +41,7 @@
                                         </state>
                                         <connections>
                                             <action selector="GLogin:" destination="WON-1T-BaK" eventType="touchUpInside" id="NPL-Ff-b2c"/>
+                                            <action selector="Glogin:" destination="WON-1T-BaK" eventType="touchUpInside" id="UZ4-zm-cG1"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="key-GA-UNp">
@@ -50,6 +51,9 @@
                                         <state key="normal" title="Facebookログイン">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
+                                        <connections>
+                                            <action selector="Flogin:" destination="WON-1T-BaK" eventType="touchUpInside" id="iDe-Qr-rsl"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mcK-2u-ZYS">
                                         <rect key="frame" x="49" y="295" width="315" height="30"/>
@@ -314,6 +318,7 @@
                                     <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1Yv-Je-dUw">
                                         <rect key="frame" x="23" y="20" width="167" height="138"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="0.016804177310000001" green="0.19835099580000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oQC-Rq-6To">
                                         <rect key="frame" x="209" y="66" width="179" height="47"/>
@@ -346,6 +351,8 @@
                         <outlet property="MoneyText2" destination="675-d5-YfL" id="sR8-p8-Uso"/>
                         <outlet property="PosseLabel" destination="t3A-Zf-bVr" id="0pu-3j-Xy2"/>
                         <outlet property="commentTextView" destination="Y2w-yq-P49" id="FLL-Rm-evX"/>
+                        <outlet property="profileImage" destination="1Yv-Je-dUw" id="TSh-gM-fG2"/>
+                        <outlet property="username" destination="oQC-Rq-6To" id="BTN-O8-DOq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -509,7 +516,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="aEU-Lp-HMO"/>
+        <segue reference="VQb-Bk-3R4"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="iOS の画像" width="2388" height="1668"/>
