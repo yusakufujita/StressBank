@@ -28,7 +28,6 @@ class DetailViewController: UIViewController {
         super.viewDidLoad()
 
         profileImageView.sd_setImage(with: URL(string: profileImage), placeholderImage: UIImage(named: "noImage"), options: .continueInBackground, context: nil)
-        
         userNameLabel.text = userName
         GLButton.setTitle("\(GoodluckCounts)", for: [])
         StressCounts.text = String(stressCounts)

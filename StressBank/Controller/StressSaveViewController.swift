@@ -9,10 +9,14 @@
 import UIKit
 import AVFoundation
 import Firebase
+import FirebaseStorage
 import PKHUD
+import SDWebImage
 
 class StressSaveViewController: UIViewController,UIImagePickerControllerDelegate,UINavigationControllerDelegate {
 
+    
+    
     
     @IBOutlet weak var MoneyLabel: UILabel!
     @IBOutlet weak var MoneyText: UITextField!
@@ -24,37 +28,52 @@ class StressSaveViewController: UIViewController,UIImagePickerControllerDelegate
     
     var imageURL:URL?
     var profileImageString = ""
-    var userName = ""
     var stresscount = Int()
+    var timeLineModel:TimeLineModel!
     
+    var imagae:UIImageView?
     // var num:Int
     var num1:Int = 0
     var num2:Int = 0
     var num3:Int = 0
     var num4:Int = 0
     var num5:Int = 0
+    
+    //Firebase storageで参照を作成
+    let storage = Storage.storage().reference().child("ProfileImageString")
+    // Create a storage reference from our storage service
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         title = "StressBank"
         commentTextView.text = ""
         commentTextView.becomeFirstResponder()
-    
-        //名前とプロフィール画像を表示する
-        username.text = UserDefaults.standard.object(forKey: "userName") as! String
+   
         
-    }
-
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        if UserDefaults.standard.object(forKey: "profileImageString") != nil {
-            profileImageString = UserDefaults.standard.object(forKey: "profileImageString") as! String
-            userName = UserDefaults.standard.object(forKey: "userName") as! String
-            print(profileImageString,userName)
+        if UserDefaults.standard.object(forKey: "userName") != nil {
+            //名前とプロフィール画像を表示する
+            username.text = UserDefaults.standard.object(forKey: "userName") as! String
+//            print(username.text!)
+        }else {
+            print("username error")
         }
         
+      
+        if UserDefaults.standard.url(forKey: "ProfileImageString") != nil {
+            //プロフィール画像を表示する
+            imageURL = UserDefaults.standard.url(forKey: "ProfileImageString") as? URL
+            profileImage.sd_setImage(with: imageURL,placeholderImage: UIImage(named: "noImage"), options: .continueInBackground, completed: nil)
+
+//            placeholderImage: UIImage(named: "noImage"), options: .continueInBackground, completed: nil
+        }else {
+            print("profileImage error")
+        }
+
     }
+   
+    
+
     
     func openActionSheet() {
         let alert:UIAlertController = UIAlertController(title: "選択してください", message: "", preferredStyle: .actionSheet)
@@ -80,7 +99,6 @@ class StressSaveViewController: UIViewController,UIImagePickerControllerDelegate
                 albumPicker.sourceType = sourceType
                 albumPicker.delegate = self
                 albumPicker.allowsEditing = true
-                
                 //カメラを出す
                 self.present(albumPicker, animated: true)
             } else {
@@ -139,6 +157,7 @@ class StressSaveViewController: UIViewController,UIImagePickerControllerDelegate
             MoneyLabel.text = String(num3)
         }
         PosseLabel.text = String(num5)
+        
 //        num1 += Int(MoneyText.text ?? "お")!
 //        MoneyLabel.text = String(num1)
 //        PosseLabel.text = String(num4)
@@ -152,12 +171,14 @@ class StressSaveViewController: UIViewController,UIImagePickerControllerDelegate
    
     
     @IBAction func postContentToDatabase(_ sender: Any) {
-        stresscount = Int(PosseLabel.text ?? "")!
+        stresscount = Int(MoneyLabel.text ?? "")!
         if commentTextView.text != "" {
-            let timeLineModel = TimeLineModel(text: commentTextView.text, profileImageString: profileImageString, userName: userName, StressCounts: stresscount)
+            let timeLineModel = TimeLineModel(text: commentTextView.text, profileImageString: imageURL!.absoluteString, userName: username.text!, StressCounts: stresscount)
             timeLineModel.save()
             self.navigationController?.popViewController(animated: true)
         }
+        
+        print(commentTextView.text!,imageURL!,username.text!)
     }
     
 }

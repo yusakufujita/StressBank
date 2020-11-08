@@ -17,5 +17,7 @@ target 'StressBank' do
    pod 'lottie-ios'
    pod 'Firebase/Core'
    pod 'Firebase/Firestore'
+   pod 'FirebaseUI/Storage'
+
 
 end

@@ -26,12 +26,10 @@ class EditViewController: UIViewController,UIImagePickerControllerDelegate,UINav
         
         PHPhotoLibrary.requestAuthorization { (status) in
             switch(status){
-            
             case .authorized:
                 print("許可されています")
             case .denied:
                 print("拒否された")
-                
             case .notDetermined:
                 print("notDetermined")
             case .restricted:
@@ -40,11 +38,11 @@ class EditViewController: UIViewController,UIImagePickerControllerDelegate,UINav
             @unknown default:
                 fatalError()
             }
-            
         }
-        
         // Do any additional setup after loading the view.
     }
+    
+    
     
     
     
@@ -53,18 +51,14 @@ class EditViewController: UIViewController,UIImagePickerControllerDelegate,UINav
     }
     
     func openActionSheet() {
-        
         let alert:UIAlertController = UIAlertController(title: "選択してください", message: "", preferredStyle: .actionSheet)
-        
         let cameraAction:UIAlertAction = UIAlertAction(title: "カメラから", style: .default) { (alert) in
-            
             let sourceType = UIImagePickerController.SourceType.camera
             if UIImagePickerController.isSourceTypeAvailable(.camera){
                 let cameraPicker = UIImagePickerController()
                 cameraPicker.sourceType = sourceType
                 cameraPicker.delegate = self
                 cameraPicker.allowsEditing = true
-                
                 //カメラを出す
                 self.present(cameraPicker, animated: true)
             } else {
@@ -74,14 +68,12 @@ class EditViewController: UIViewController,UIImagePickerControllerDelegate,UINav
         
         let albumAction = UIAlertAction(title: "アルバムから", style: .default) {
             (alert) in
-            
             let sourceType = UIImagePickerController.SourceType.photoLibrary
             if UIImagePickerController.isSourceTypeAvailable(.photoLibrary){
                 let albumPicker = UIImagePickerController()
                 albumPicker.sourceType = sourceType
                 albumPicker.delegate = self
                 albumPicker.allowsEditing = true
-                
                 //カメラを出す
                 self.present(albumPicker, animated: true)
             } else {
@@ -90,33 +82,32 @@ class EditViewController: UIViewController,UIImagePickerControllerDelegate,UINav
         }
         
         let cancelAction = UIAlertAction(title: "キャンセル", style: .cancel){(alert) in
-            
             print("キャンセル")
         }
-        
         alert.addAction(cameraAction)
         alert.addAction(albumAction)
         alert.addAction(cancelAction)
         self.present(alert, animated: true, completion: nil)
-        
     }
-    
     
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewDidLoad()
-        
 //        self.navigationController?.navigationBar.isHidden = true
+//        if UserDefaults.standard.object(forKey: "profileImageString") != nil{
+//            profileImageString = UserDefaults.standard.object(forKey: "profileImageString") as! String
+//            userName = UserDefaults.standard.object(forKey: "userName") as! String
+//            print(profileImageString,userName)
+//        }
+
     }
     
     
     @IBAction func done(_ sender: Any) {
-        
         //もしimageView.imageがnilでなかったら,
         //ストレージサーバーへ画像を送信して、
         //ストレージサーバーから返ってきて画像のURLを取得して、
         //次のタイムライン画面へ画面遷移する
-        
         if imageView.image != nil {
             //同期処理{}の中の処理が終わらないと下にはいきません
             DispatchQueue.main.async {
@@ -135,9 +126,6 @@ class EditViewController: UIViewController,UIImagePickerControllerDelegate,UINav
             let generator = UINotificationFeedbackGenerator()
             generator.notificationOccurred(.error)
         }
-        
-        
-     
         //UserNameViewを消す
     }
     
@@ -146,51 +134,53 @@ class EditViewController: UIViewController,UIImagePickerControllerDelegate,UINav
     func sendAndGetImageURL(){
         //RealtimeDataベース
         let ref = Database.database().reference(fromURL: "https://stressbank-4309c.firebaseio.com/")
-        
         //storage
 //        gs://stressbank-4309c.appspot.com/
         let storage = Storage.storage().reference(forURL: "gs://stressbank-4309c.appspot.com/")
         
-        
         //画像が入るフォルダを作成して、そこに画像を入れる
         //画像の名前も決めます
-
         let key = ref.childByAutoId().key
         let imageRef = storage.child("ProfileImages").child("\(key).jpeg")
         var imageData:Data = Data()
+        let meta = StorageMetadata()
+        meta.contentType = "image/jpeg"
         if self.imageView.image != nil {
             //100分の１に圧縮
             imageData = (self.imageView.image?.jpegData(compressionQuality: 0.01))!
-            
         }
-        
-        
         //HUD
         HUD.dimsBackground = false
         HUD.show(.progress)
-        
-        
         //アップロードタスク
-        let uploadTask = imageRef.putData(imageData, metadata: nil){(metaData, error) in
+        //Fire storageにアップロード完了
         
+        let uploadTask = imageRef.putData(imageData, metadata: meta){(metadata, error) in
             if error != nil {
                 print(error as Any)
                 return
             }
             
-            imageRef.downloadURL{(url, error) in
-                if url != nil{
-                    
+            imageRef.downloadURL{(metadata, error) in
+                if metadata != nil{
                     //HUD
                     HUD.hide()
-                    self.imageURL = url
+                    self.imageURL = metadata!
                     UserDefaults.standard.set(self.imageURL?.absoluteString, forKey: "ProfileImageString")
                 }
             }
+            
+//            imageRef.downloadURL{(url, error) in
+//                if url != nil{
+//                    //HUD
+//                    HUD.hide()
+//                    self.imageURL = url
+//                    UserDefaults.standard.set(self.imageURL?.absoluteString, forKey: "ProfileImageString")
+//                }
+//            }
         }
         uploadTask.resume()
     }
-    
     //キャンセルボタンが押されたら,閉じる
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         picker.dismiss(animated: true, completion: nil)
@@ -200,7 +190,6 @@ class EditViewController: UIViewController,UIImagePickerControllerDelegate,UINav
     //画像が選択されたら
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let pickedImage = info[.editedImage] as? UIImage{
-            
             self.imageView.image = pickedImage
             picker.dismiss(animated: true, completion: nil)
             
